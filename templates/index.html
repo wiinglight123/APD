@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Image Processing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <h2>Live Image Processing Preview</h2>
+    <img id="imageDisplay" width="500" style="border: 2px solid black;">
+
+    <script>
+        var socket = io();
+        socket.on('image_update', function(data) {
+            document.getElementById("imageDisplay").src = "data:image/jpeg;base64," + data.image;
+        });
+    </script>
+</body>
+</html>
